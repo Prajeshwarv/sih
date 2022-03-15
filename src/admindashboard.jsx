@@ -1,8 +1,24 @@
 import React, { Component } from "react";
 import Canvas from "./canvas";
 import { Modal } from "./infoModal";
+
 class Admindashboard extends Component {
-  state = {};
+  state = {
+    date: "",
+    month: "",
+    year: "",
+  };
+  calenderHandler = () => {
+    var date = document.querySelector("#date").value;
+    var year = date.substring(0, 4);
+    var month = date.substring(5, 7);
+    var day = date.substring(8, 10);
+    this.setState({
+      date: day,
+      month: month,
+      year: year,
+    });
+  };
   render() {
     return (
       <div>
@@ -35,7 +51,12 @@ class Admindashboard extends Component {
                   </a>
                 </li>
               </ul>
-              <button className="btn btn-outline-success me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+              <button
+                className="btn btn-outline-success me-2"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -201,6 +222,56 @@ class Admindashboard extends Component {
         <Modal Heading="Mountain Rail" gateWay="Station 3" id="MRS3"></Modal>
         <Modal Heading="Mountain Rail" gateWay="Final Station" id="MRF"></Modal>
         <Canvas></Canvas>
+        <br />
+        <br />
+        <input type="date" id="date" onChange={this.calenderHandler}></input>
+        <br />
+        <br />
+        {this.state.date !== "" ? (
+          <div>
+            <div className="row">
+              <div className="col-sm-6 offset-sm-3">
+                <div class="card" style={{ width: "18rem;" }}>
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      {this.state.date}-{this.state.month}-{this.state.year}
+                    </h5>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Place</th>
+                          <th scope="col">Amount</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Mark</td>
+                          <td>Meuseum</td>
+                          <td>80</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Jacob</td>
+                          <td>Shore Temple</td>
+                          <td>50</td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div></div>
+        )}
+        <br />
+        <br />
+        <br />
       </div>
     );
   }

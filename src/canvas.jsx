@@ -31,6 +31,12 @@ class Canvas extends Component {
               Manage Working Hours
             </a>
             <a href="/#" class="list-group-item list-group-item-action">
+              Manage Revenue
+            </a>
+            <a href="/#" class="list-group-item list-group-item-action">
+              Predict Revenue
+            </a>
+            <a href="/#" class="list-group-item list-group-item-action">
               Logout
             </a>
             
